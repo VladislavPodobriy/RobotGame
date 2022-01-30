@@ -15,14 +15,43 @@ public class PathManager : Singleton<PathManager>
     public static List<Vector2> GetPath(Vector2 origin, Vector2 target)
     {
         var waypoints = GetWaypoints(origin, target);
-        if (waypoints.Count >= 2)
-            waypoints[0] = FindNearestPointOnLine(waypoints[0], waypoints[1], origin);
-        if (waypoints.Count >= 3)
-            waypoints[waypoints.Count - 1] = FindNearestPointOnLine(waypoints[waypoints.Count - 1], waypoints[waypoints.Count - 2], target);
-        return waypoints;
+
+        var path = waypoints.Select(x => (Vector2)x.transform.position).ToList();
+        
+        if (waypoints.Any())
+        {
+            var startWaypoint = waypoints.First();
+            var startConnectedWaypoint = startWaypoint.ConnectedWaypoints.Select(x => new 
+                {
+                    Position = FindNearestPointOnLine(startWaypoint.transform.position, x.transform.position, origin), 
+                    ConnectedPoint = x
+                })
+                .OrderBy(x => Vector2.Distance(x.Position, origin))
+                .First();
+
+            if (waypoints.Count > 1 && startConnectedWaypoint.ConnectedPoint == waypoints[1])
+                path[0] = startConnectedWaypoint.Position;
+            else
+                path.Insert(0, startConnectedWaypoint.Position);
+            
+            var endWaypoint = waypoints.Last();
+            var endConnectedWaypoint = endWaypoint.ConnectedWaypoints.Select(x => new 
+                {
+                    Position = FindNearestPointOnLine(endWaypoint.transform.position, x.transform.position, target), 
+                    ConnectedPoint = x
+                })
+                .OrderBy(x => Vector2.Distance(x.Position, target))
+                .First();
+
+            if (waypoints.Count > 1 && endConnectedWaypoint.ConnectedPoint == waypoints[waypoints.Count - 2])
+                path[path.Count - 1] = endConnectedWaypoint.Position;
+            else
+                path.Insert(path.Count, endConnectedWaypoint.Position);
+        }
+        return path;
     }
     
-    private static List<Vector2> GetWaypoints(Vector2 origin, Vector2 target)
+    private static List<Waypoint> GetWaypoints(Vector2 origin, Vector2 target)
     {
         var targetWaypoint = Instance.Waypoints
             .OrderBy(x => Vector2.Distance(x.transform.position, target))
@@ -33,7 +62,7 @@ public class PathManager : Singleton<PathManager>
             .FirstOrDefault();
         
         if (targetWaypoint == null || originWaypoint == null)
-            return new List<Vector2>();
+            return new List<Waypoint>();
         
         var waypointsToProcess = new List<Waypoint> {targetWaypoint};
         var visitedWaypoints = new List<Waypoint>();
@@ -45,10 +74,10 @@ public class PathManager : Singleton<PathManager>
             
             if (waypoint == originWaypoint)
             {
-                var result = new List<Vector2>();
+                var result = new List<Waypoint>();
                 while (true)
                 {
-                    result.Add(waypoint.transform.position);
+                    result.Add(waypoint);
                     if (waypoint == targetWaypoint)
                         return result;
                     
@@ -67,7 +96,7 @@ public class PathManager : Singleton<PathManager>
             }
         }
 
-        return new List<Vector2>();
+        return new List<Waypoint>();
     }
     
     private static Vector2 FindNearestPointOnLine(Vector2 origin, Vector2 end, Vector2 point)

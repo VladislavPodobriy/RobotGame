@@ -20,29 +20,27 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 10de631bd6ead52498391893d642a6f0, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300000, guid: 97876d69f170d6047af9645dbcea5f7b, type: 3}
-    - time: 0.16666667
-      value: {fileID: 21300000, guid: 10eb6a1726388f54a85b950f4e84eb28, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: 890074fea2b13814fb441063d7616bf9, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: b5f241c8fff37854eb3d030be30a01bf, type: 3}
-    - time: 0.41666666
       value: {fileID: 21300000, guid: 7a836cd7cc92e024eb8cb38dc55e7481, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: ffc637848b7585346b5654b4ed3e0df3, type: 3}
-    - time: 0.5833333
+    - time: 0.083333336
       value: {fileID: 21300000, guid: e2596e569f88c7049ab41c9ae96ebfc3, type: 3}
-    - time: 0.6666667
+    - time: 0.16666667
       value: {fileID: 21300000, guid: ea7fe3715f57b29469af8b9c69ab4001, type: 3}
-    - time: 0.75
+    - time: 0.25
       value: {fileID: 21300000, guid: 41abb1c76d11ebb43b0be2bc2ba089fe, type: 3}
-    - time: 0.8333333
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 090f365408b520e48a0035faa6457d76, type: 3}
-    - time: 0.9166667
+    - time: 0.41666666
       value: {fileID: 21300000, guid: 9a2a0c1888cf9b84da8cc61688631743, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 10de631bd6ead52498391893d642a6f0, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: 97876d69f170d6047af9645dbcea5f7b, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 10eb6a1726388f54a85b950f4e84eb28, type: 3}
+    - time: 0.75
+      value: {fileID: 21300000, guid: 890074fea2b13814fb441063d7616bf9, type: 3}
+    - time: 0.8333333
+      value: {fileID: 21300000, guid: b5f241c8fff37854eb3d030be30a01bf, type: 3}
     attribute: m_Sprite
     path: Body
     classID: 212
@@ -62,24 +60,23 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 10de631bd6ead52498391893d642a6f0, type: 3}
-    - {fileID: 21300000, guid: 97876d69f170d6047af9645dbcea5f7b, type: 3}
-    - {fileID: 21300000, guid: 10eb6a1726388f54a85b950f4e84eb28, type: 3}
-    - {fileID: 21300000, guid: 890074fea2b13814fb441063d7616bf9, type: 3}
-    - {fileID: 21300000, guid: b5f241c8fff37854eb3d030be30a01bf, type: 3}
     - {fileID: 21300000, guid: 7a836cd7cc92e024eb8cb38dc55e7481, type: 3}
-    - {fileID: 21300000, guid: ffc637848b7585346b5654b4ed3e0df3, type: 3}
     - {fileID: 21300000, guid: e2596e569f88c7049ab41c9ae96ebfc3, type: 3}
     - {fileID: 21300000, guid: ea7fe3715f57b29469af8b9c69ab4001, type: 3}
     - {fileID: 21300000, guid: 41abb1c76d11ebb43b0be2bc2ba089fe, type: 3}
     - {fileID: 21300000, guid: 090f365408b520e48a0035faa6457d76, type: 3}
     - {fileID: 21300000, guid: 9a2a0c1888cf9b84da8cc61688631743, type: 3}
+    - {fileID: 21300000, guid: 10de631bd6ead52498391893d642a6f0, type: 3}
+    - {fileID: 21300000, guid: 97876d69f170d6047af9645dbcea5f7b, type: 3}
+    - {fileID: 21300000, guid: 10eb6a1726388f54a85b950f4e84eb28, type: 3}
+    - {fileID: 21300000, guid: 890074fea2b13814fb441063d7616bf9, type: 3}
+    - {fileID: 21300000, guid: b5f241c8fff37854eb3d030be30a01bf, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.9166666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -98,4 +95,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlayRunSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 0.41666666
+    functionName: PlayRunSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
